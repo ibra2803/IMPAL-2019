@@ -1,0 +1,93 @@
+CREATE TABLE Pegawai (
+  idPegawai varchar2(20) NOT NULL,
+  nama varchar2(20) NOT NULL,
+  password varchar2(12) NOT NULL,
+  jabatan varchar2(20) NOT NULL,
+  alamat varchar2(20) NOT NULL,
+  noKontak number(12) NOT NULL,
+  PRIMARY KEY (idPEgawai)
+);
+
+CREATE TABLE Barang (
+  idBarang varchar2(20) NOT NULL,
+  namaBarang varchar(20) NOT NULL,
+  banyakBarang number(38) NOT NULL,
+  hargaBarang number(38) NOT NULL,
+  PRIMARY KEY (idBarang)
+);
+  
+CREATE TABLE Menjual (
+  idTransaksi varchar2(20) NOT NULL,
+  tanggalTransaksi date NOT NULL,
+  idPegawai varchar2(20) NOT NULL,
+  idBarang varchar2(20) NOT NULL,
+  PRIMARY KEY (idTransaksi),
+  FOREIGN KEY (idPegawai) REFERENCES Pegawai(idPegawai),
+  FOREIGN KEY (idBarang) REFERENCES Barang(idBarang)
+);
+    
+CREATE TABLE Keuangan(
+  noLaporan number(12) NOT NULL,
+  tanggalLaporan date NOT NULL,
+  pemasukan number(38) NOT NULL,
+  pengeluaran number(38) NOT NULL,
+  PRIMARY KEY (noLaporan)
+);
+
+CREATE TABLE Membuat (
+  idPegawai varchar2(20) NOT NULL,
+  noLaporan varchar2(20) NOT NULL,
+  FOREIGN KEY (idPegawai) REFERENCES Pegawai(idPegawai),
+  FOREIGN KEY (noLaporan) REFERENCES Keuangan(noLaporan)
+);
+
+CREATE TABLE Tagihan (
+  noTagihan number(20) NOT NULL,
+  tglTagihan date NOT NULL,
+  jumlahTagihan number(38) NOT NULL,
+  idBarang varchar2(20) NOT NULL,
+  noLaporan number(12) NOT NULL,
+  PRIMARY KEY (noTagihan),
+  FOREIGN KEY (idBarang) REFERENCES Barang(idBarang),
+  FOREIGN KEY (noLaporan) REFERENCES Keuangan(noLaporan)
+);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Rizki, passrizki, Manager, Harau, 0812XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Ibraihan, passibraihan, Keuangan, Bandung, 0822XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Rizkitrio, passrizkitrio, Kasir, Jakarta, 0823XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Ibra, passibra, Kasir, Zimbabwe, 0813XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Ronaldo, passronaldo, Direktur, Portugal, 0880XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Jones, passjones, Supervisor, Jamaika, 0832XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Rizkianoronaldo, passrizkianoronaldo, Supervisor, Norwegia, 0818XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Wan Ujang, passwanujang, OB, Mesir, 0819XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Mang Jajang, passmangjajang, Asisten Manager, Selandia Baru, 0832XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Ken Dedes, passkendedes, Kasir, Jamaika Utara, 0892XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Mpu Tantular, passtantular, Kasir, Majapahit, 0816XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Romi Rafael, passromi, Kasir, Meksiko, 0892XXX);
+
+INSERT INTO Pegawai (nama, password, jabatan, alamat, noKontak) 
+VALUES (Dedi Dores, passdedi, Gudang, Bengkulu, 0872XXX);
+
